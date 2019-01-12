@@ -1,0 +1,11 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "example",
+  "password": "example",
+  "database": "typegraphql_example",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/entity/**/*.*"]
+}
