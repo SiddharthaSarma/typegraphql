@@ -17,7 +17,7 @@ export class User extends BaseEntity {
   lastName: string;
 
   @Field()
-  @Column('varchar', { unique: true, length: '300' })
+  @Column('varchar', { unique: true, length: 300 })
   email: string;
 
   @Column()

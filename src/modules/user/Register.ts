@@ -4,9 +4,10 @@ import * as bcrypt from 'bcryptjs';
 
 @Resolver()
 export class HelloResolver {
-  @Query(() => String, { name: 'helloworld' })
-  async hello() {
-    return 'Hello world';
+  @Query(() => User)
+  async getUserDetails(@Arg('ID') ID: number): Promise<User | undefined> {
+    const user = await User.findOne({ id: ID });
+    return user;
   }
 
   @Mutation(() => User)
