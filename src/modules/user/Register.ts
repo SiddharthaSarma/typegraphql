@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import { RegisterInput } from './register/RegisterInput';
 
 @Resolver()
-export class HelloResolver {
+export class RegisterResolver {
   @Query(() => User)
   async getUserDetails(@Arg('ID') ID: number): Promise<User | undefined> {
     const user = await User.findOne({ id: ID });

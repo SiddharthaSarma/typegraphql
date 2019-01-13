@@ -3,7 +3,7 @@ import { ApolloServer } from 'apollo-server-express';
 import Express from 'express';
 import { buildSchema, formatArgumentValidationError } from 'type-graphql';
 import { createConnection } from 'typeorm';
-import { HelloResolver } from './modules/user/Register';
+import { RegisterResolver } from './modules/user/Register';
 import session from 'express-session';
 import connectRedis from 'connect-redis';
 import cors from 'cors';
@@ -13,7 +13,7 @@ import { LoginResolver } from './modules/user/Login';
 const main = async () => {
   await createConnection();
   const schema = await buildSchema({
-    resolvers: [HelloResolver, LoginResolver]
+    resolvers: [RegisterResolver, LoginResolver]
   });
   const app = Express();
   const apolloServer = new ApolloServer({
