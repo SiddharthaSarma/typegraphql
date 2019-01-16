@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
+
 export const sendEmail = async () => {
-  console.log('siddhartha');
   const account = await nodemailer.createTestAccount();
 
   const transporter = nodemailer.createTransport({
@@ -10,7 +10,8 @@ export const sendEmail = async () => {
     auth: {
       user: account.user, // generated ethereal user
       pass: account.pass // generated ethereal password
-    }
+    },
+    tls: { rejectUnauthorized: false }
   });
 
   // setup email data with unicode symbols
