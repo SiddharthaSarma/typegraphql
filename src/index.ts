@@ -11,6 +11,7 @@ import { redis } from './redis';
 import { LoginResolver } from './modules/user/Login';
 import { MeResolver } from './modules/user/Me';
 import { ConfirmUserResolver } from './modules/user/ConfirmUser';
+import { ForgotPasswordResolver } from './modules/user/ForgotPassword';
 
 const main = async () => {
   await createConnection();
@@ -19,7 +20,8 @@ const main = async () => {
       RegisterResolver,
       LoginResolver,
       MeResolver,
-      ConfirmUserResolver
+      ConfirmUserResolver,
+      ForgotPasswordResolver
     ],
     authChecker: ({ context }) => {
       return !!context.req.session.userId;
