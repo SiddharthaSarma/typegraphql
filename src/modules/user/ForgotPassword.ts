@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 import { User } from '../../entity/User';
 import { redis } from '../../redis';
 import { sendEmail } from '../../utils/SendEmail';
+import { forgotPasswordPrefix } from '../constants/redisPrefixer';
 
 @Resolver()
 export class ForgotPasswordResolver {
@@ -13,8 +14,11 @@ export class ForgotPasswordResolver {
       return true;
     }
     const token = v4();
-    await redis.set(token, email, 'ex', 60 * 60 * 24);
-    await sendEmail(email, `http://localhost:3000/user/confirm/${token}`);
+    await redis.set(forgotPasswordPrefix + token, email, 'ex', 60 * 60 * 24);
+    await sendEmail(
+      email,
+      `http://localhost:3000/user/change-password/${token}`
+    );
 
     return true;
   }
